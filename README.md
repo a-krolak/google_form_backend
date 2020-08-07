@@ -43,7 +43,7 @@ In order to format the csv data, `await data = response.text()`. This will give 
 
 https://www.papaparse.com/is a site that will provide us with a third party library which will import new tools to our app. Using a CDN (content delivery network) we can download a librarie's functionality to the project using a `<script>` tag in our html.
 
-Cdnjs.com/libraries/papaparse should provide us with a url that we can use as the `src` attribute for our new `<script>` tag (there should 2 seperate `<script>` tags now).
+https://cdnjs.com/libraries/PapaParse should provide us with a url that we can use as the `src` attribute for our new `<script>` tag (there should 2 seperate `<script>` tags now).
 
 To parse our data we should do: `const result = Papa.parse(data, {header: true})`. This syntax is a new addition to our JS which we have obrtained from importing the Papa parse library.
 
