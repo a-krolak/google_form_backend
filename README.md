@@ -35,13 +35,13 @@ Create an async function called `fetchUserResponses`. Have it fetch the url to y
 - CORS - cross origin resource sharing. Security measure in place to prevent the sharing of data directly to another website without using a server as an intermediary.
 
 To bypass a CORS error we can use the cors-anywhere site. This is ok for a simple project like this but not recommended for real life projects! 
-Cors-anywhere.herokuapp.com
+http://cors-anywhere.herokuapp.com/
 
-Copy the cors-anywhere url and prepend it before the url of your spreadsheet url in the fetch request and we should get the CORS error to go away and get a valid response (thios step is documented on the cors-anywhere site).
+Copy the cors-anywhere url and prepend it before the url of your spreadsheet url in the fetch request and we should get the CORS error to go away and get a valid response (this step is documented on the cors-anywhere site).
 
 In order to format the csv data, `await data = response.text()`. This will give use some actual text to work with.
 
-Papaparse.com is a site that will provide us with a third party library which will import new tools to our app. Using a CDN (content delivery network) we can download a librarie's functionality to the project using a `<script>` tag in our html.
+https://www.papaparse.com/is a site that will provide us with a third party library which will import new tools to our app. Using a CDN (content delivery network) we can download a librarie's functionality to the project using a `<script>` tag in our html.
 
 Cdnjs.com/libraries/papaparse should provide us with a url that we can use as the `src` attribute for our new `<script>` tag (there should 2 seperate `<script>` tags now).
 
