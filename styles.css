@@ -1,0 +1,93 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(37, 54, 71);
+  margin: 0;
+  font-family: "fira sans", sans-serif;
+}
+
+header {
+  background-color: rgb(243, 240, 236);
+  color: rgb(37, 54, 71);
+  font-family: "Playfair Display", serif;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 10rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.description {
+  margin: 1rem;
+}
+
+main {
+  max-width: 100%;
+  margin: 5rem 0 auto 0;
+  background-color: rgb(37, 54, 71);
+}
+
+#user-responses {
+  display: grid;
+  place-items: center;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
+  padding: 4rem 2rem;
+}
+
+.cards {
+  margin: 2rem;
+  padding: 0.5rem;
+  display: grid;
+  background-color: rgb(243, 240, 236);
+  color: rgb(37, 54, 71);
+  border-radius: 4px;
+  text-align: center;
+  min-width: 650px;
+  min-height: 650px;
+}
+
+li {
+  list-style: none;
+}
+
+h1 {
+  margin: 0;
+}
+
+h2 {
+  margin: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.cards img {
+  object-position: center;
+  margin: 0 auto;
+  border-radius: 4px;
+  height: 300px;
+  width: 50%;
+  box-shadow: rgb(37, 54, 71, 0.5);
+}
+
+footer {
+  background-color: rgb(37, 54, 71);
+  color: rgb(243, 240, 236);
+  font-family: "playfair display";
+  padding: 2rem 2rem 0rem 5rem;
+  margin: auto;
+  font-size: 10px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
