@@ -16,7 +16,7 @@ header {
   top: 0;
   left: 0;
   right: 0;
-  height: 10rem;
+  height: 9rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -31,6 +31,7 @@ main {
   max-width: 100%;
   margin: 5rem 0 auto 0;
   background-color: rgb(37, 54, 71);
+  color: rgb(243, 240, 236);
 }
 
 #user-responses {
