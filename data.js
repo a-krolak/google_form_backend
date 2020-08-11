@@ -4,6 +4,7 @@ const transportationSelect = document.querySelector('#transportation');
 const accommodationSelect = document.querySelector('#accommodation');
 const seasonSelect = document.querySelector('#season');
 const searchInput = document.querySelector('#search');
+const main = document.querySelector('main');
 
 const fetchUserResponses = async () => {
   const response = await fetch(
@@ -71,31 +72,40 @@ fetchAndShowResponses();
 // Filters
 
 const travelFilter = travel => {
+  const travelMethod = travel['What is your preferred method of travel?'];
+  const accommodation =
+    travel['What accommodations do you prefer to stay in when you do travel?'];
+  const season = travel['In what season do you prefer to travel?'];
+
   const selectedTransportation = transportationSelect.value;
   const selectedAccommodation = accommodationSelect.value;
   const selectedSeason = seasonSelect.value;
   const searchTerm = searchInput.value.toLowerCase();
   return (
     (selectedTransportation === 'all' ||
-      travel.travelMethod === selectedTransportation) &&
+      travelMethod.toLowerCase() === selectedTransportation) &&
     (selectedAccommodation === 'all' ||
-      travel.accomodation === selectedAccommodation) &&
-    (selectedSeason === 'all' || travel.season === selectedSeason) &&
-    (travel.travelMethod.toLowerCase().includes(searchTerm) ||
-      travel.accomodation.toLowerCase().includes(searchTerm) ||
-      travel.season.toLowerCase().includes(searchTerm))
+      accommodation.toLowerCase() === selectedAccommodation) &&
+    (selectedSeason === 'all' || season === selectedSeason) &&
+    (travelMethod.toLowerCase().includes(searchTerm) ||
+      accommodation.toLowerCase().includes(searchTerm) ||
+      season.toLowerCase().includes(searchTerm))
   );
 };
 
 const handleFilterInput = () => {
-  const filteredTravels = travel.filter(travelFilter);
-  main.innerHTML = filteredTravels.map(renderTravel).join('');
+  const filteredTravels = responses.filter(travelFilter);
+  main.innerHTML = filteredTravels.map(renderUserResponse).join('');
+
+  console.log(filteredTravels);
 };
 
 transportationSelect.addEventListener('input', handleFilterInput);
 accommodationSelect.addEventListener('input', handleFilterInput);
 seasonSelect.addEventListener('input', handleFilterInput);
 searchInput.addEventListener('input', handleFilterInput);
+
+/* 
 
 // Charts
 
@@ -112,9 +122,12 @@ const FetchAndShowResponses = async () => {
   const eachUserResponseHTML = responses.map(renderUserResponse);
   const allUserResponsesHTML = eachUserResponseHTML.join('');
   userResponses.innerHTML = allUserResponsesHTML;
+  
   responses.forEach(response => {
     votes[response[typeOfVacations]] += 1;
     console.log(votes);
+  });
+  };
 
     new Chart('doughnut', {
       type: 'doughnut',
@@ -122,11 +135,13 @@ const FetchAndShowResponses = async () => {
         datasets: [
           {
             data: Object.values(votes),
-            backgroundColor:[white, blue, grey, black,
+            backgroundColor:[white, blue, grey,
           }],
         labels: Object.keys(votes),
       },
     });
-  });
-};
+  
+
 FetchAndShowResponses();
+
+*/
