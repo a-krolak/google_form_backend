@@ -19,12 +19,52 @@
       >
     </p>
   </header>
+  <div id="controls">
+    <div>
+      <label for="transportation">Transportation</label>
+      <select id="transportation">
+        <option>all</option>
+        <option>plane</option>
+        <option>train</option>
+        <option>car</option>
+        <option>bus</option>
+        <option>private charter</option>
+      </select>
+    </div>
+    <div>
+      <label for="accommodation">Accommodation</label>
+      <select id="accommodation">
+        <option>all</option>
+        <option>hotel</option>
+        <option>air bnb</option>
+        <option>hostel</option>
+        <option>motel</option>
+        <option>private residence</option>
+        <option>all inclusive accommodation</option>
+      </select>
+    </div>
+    <div>
+      <label for="season">Season</label>
+      <select id="season">
+        <option>all</option>
+        <option>fall</option>
+        <option>winter</option>
+        <option>spring</option>
+        <option>summer</option>
+      </select>
+    </div>
+    <div>
+      <label for="search">Search</label>
+      <input id="search" type="text" autocomplete="off" />
+    </div>
+  </div>
   <body>
     <main>
       <section id="user-responses"><h2>Loading…</h2></section>
     </main>
     <script src="data.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.2.0/papaparse.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.bundle.min.js"></script>
   </body>
   <footer>
     <p>© 2020 ALEX KROLAK FOR RBI TECH BOOTCAMP | CREATED WITH ♥︎</p>

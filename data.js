@@ -1,5 +1,9 @@
 let responses = [];
 const userResponseSection = document.querySelector('#user-responses');
+const transportationSelect = document.querySelector('#transportation');
+const accommodationSelect = document.querySelector('#accommodation');
+const seasonSelect = document.querySelector('#season');
+const searchInput = document.querySelector('#search');
 
 const fetchUserResponses = async () => {
   const response = await fetch(
@@ -14,7 +18,7 @@ const renderUserResponse = userResponse => {
   const name = userResponse.Name;
   const age = userResponse.Age;
   const travelMethod = userResponse['What is your preferred method of travel?'];
-  const accomodation =
+  const accommodation =
     userResponse[
       'What accommodations do you prefer to stay in when you do travel?'
     ];
@@ -36,7 +40,7 @@ const renderUserResponse = userResponse => {
   ${travelMethod}</li> 
   <br/>
   <li><em>My preferred accomodation is...</em> <br/>
-  ${accomodation}</li> 
+  ${accommodation}</li> 
   <br/>
   <li><em>My favourite season to travel is...</em> <br/> 
   ${season}</li> 
@@ -48,8 +52,8 @@ const renderUserResponse = userResponse => {
   ${favouriteDestination}!</li> 
   </ul>
   
-  <h3>The best part of travelling is... 
-  ${favouritePart}!</h3> 
+  <h3>"The best part of travelling is... 
+  ${favouritePart}!"</h3> 
   <img src="https://drive.google.com/thumbnail?id=${travellingPicture}" alt="img-name" /> 
   </div>
   `;
@@ -63,3 +67,66 @@ const fetchAndShowResponses = async () => {
 };
 
 fetchAndShowResponses();
+
+// Filters
+
+const travelFilter = travel => {
+  const selectedTransportation = transportationSelect.value;
+  const selectedAccommodation = accommodationSelect.value;
+  const selectedSeason = seasonSelect.value;
+  const searchTerm = searchInput.value.toLowerCase();
+  return (
+    (selectedTransportation === 'all' ||
+      travel.travelMethod === selectedTransportation) &&
+    (selectedAccommodation === 'all' ||
+      travel.accomodation === selectedAccommodation) &&
+    (selectedSeason === 'all' || travel.season === selectedSeason) &&
+    (travel.travelMethod.toLowerCase().includes(searchTerm) ||
+      travel.accomodation.toLowerCase().includes(searchTerm) ||
+      travel.season.toLowerCase().includes(searchTerm))
+  );
+};
+
+const handleFilterInput = () => {
+  const filteredTravels = travel.filter(travelFilter);
+  main.innerHTML = filteredTravels.map(renderTravel).join('');
+};
+
+transportationSelect.addEventListener('input', handleFilterInput);
+accommodationSelect.addEventListener('input', handleFilterInput);
+seasonSelect.addEventListener('input', handleFilterInput);
+searchInput.addEventListener('input', handleFilterInput);
+
+// Charts
+
+const typeOfVacations = 'What type of vacations do you prefer?';
+
+const votes = {
+  'Adventure / Exploration': 0,
+  'Leisure / Relaxation': 0,
+  'Cultural / Educational': 0,
+};
+
+const FetchAndShowResponses = async () => {
+  await fetchUserResponses();
+  const eachUserResponseHTML = responses.map(renderUserResponse);
+  const allUserResponsesHTML = eachUserResponseHTML.join('');
+  userResponses.innerHTML = allUserResponsesHTML;
+  responses.forEach(response => {
+    votes[response[typeOfVacations]] += 1;
+    console.log(votes);
+
+    new Chart('doughnut', {
+      type: 'doughnut',
+      data: {
+        datasets: [
+          {
+            data: Object.values(votes),
+            backgroundColor:[white, blue, grey, black,
+          }],
+        labels: Object.keys(votes),
+      },
+    });
+  });
+};
+FetchAndShowResponses();

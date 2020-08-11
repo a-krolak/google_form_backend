@@ -21,6 +21,8 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border: double 10px white;
+  z-index: 2;
 }
 
 .description {
@@ -29,7 +31,6 @@ header {
 
 main {
   max-width: 100%;
-  margin: 5rem 0 auto 0;
   background-color: rgb(37, 54, 71);
   color: rgb(243, 240, 236);
 }
@@ -39,7 +40,7 @@ main {
   place-items: center;
   justify-content: center;
   grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
-  padding: 4rem 2rem;
+  padding: 1rem 2rem;
 }
 
 .cards {
@@ -52,6 +53,13 @@ main {
   text-align: center;
   min-width: 650px;
   min-height: 650px;
+  border: double 10px white;
+  box-shadow: 2px 2px rgb(37, 54, 71, 0.1);
+  transition: transform 0.3s;
+}
+
+.cards:hover {
+  transform: scale(1.05);
 }
 
 li {
@@ -60,12 +68,19 @@ li {
 
 h1 {
   margin: 0;
+  text-shadow: 2px 2px rgb(37, 54, 71, 0.1);
 }
 
 h2 {
   margin: 1rem;
   text-transform: uppercase;
   letter-spacing: 1px;
+  text-shadow: 2px 2px rgb(37, 54, 71, 0.1);
+}
+
+h3 {
+  text-shadow: 2px 2px rgb(37, 54, 71, 0.1);
+  font-style: italic;
 }
 
 .cards img {
@@ -87,8 +102,23 @@ footer {
   bottom: 0;
   left: 0;
   right: 0;
-
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+#controls {
+  max-width: 75%;
+  display: flex;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem;
+  margin: 4.5rem auto 0.5rem auto;
+  background-color: rgb(243, 240, 236);
+  color: rgb(37, 54, 71);
+  padding: 1rem;
+  justify-content: space-between;
+  margin-top: 12rem;
+  border-radius: 4px;
+  border: double 10px white;
+  box-shadow: 2px 2px rgb(37, 54, 71, 0.1);
 }
